@@ -1,14 +1,17 @@
 <h1>Search Results</h1>
 
-<p class="title"><%= @book.title %></p>
-<p class="author"><%= @book.author %></p>
-<p class="genres"><%= @book.genres %></p>
+<p class="title">Title: <%= @book.title %></p>
+<p class="author">Author: <%= @book.author.first %></p>
+<% if @book.genres %>
+  <p class="genres">Genre: <%= @book.genres %></p>
+<% end %>
 
 <section class="reviews">
 <h1>Reviews</h1>
 <p>Reviews: <%= @reviews.count %></p>
-<% @reviews.each do |review| %>
+<% @reviews.each_with_index do |review, index| %>
   <section class="review">
+    <p>Review <%= index + 1 %></p>
     <p>Review Content: <%= review.summary %></p>
     <p>Review Publication Date: <%= review.publication_date %></p>
   </section>
