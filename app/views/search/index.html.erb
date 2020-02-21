@@ -1,0 +1,15 @@
+<h1>Search Results</h1>
+
+<p class="title"><%= @book.title %></p>
+<p class="author"><%= @book.author %></p>
+<p class="genres"><%= @book.genres %></p>
+
+<section class="reviews">
+<h1>Reviews</h1>
+<% @book.reviews.each do |review| %>
+  <section class="review">
+    <p>Review Content: <%= review.content %></p>
+    <p>Review Content: <%= review.publication_date %></p>
+  </section>
+<% end %>
+</section>
