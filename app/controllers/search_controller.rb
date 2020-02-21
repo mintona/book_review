@@ -1,9 +1,12 @@
 class SearchController < ApplicationController
   def index
-    library_conn = Faraday.new(:url => 'http://openlibrary.org/search.json?')
-    library_response = library_conn.get do |req|
-      req.params['title'] = params[:title]
-    end
+
+    library_response = LibraryService.new.get_book(params[:title])
+
+    # library_conn = Faraday.new(:url => 'http://openlibrary.org/search.json?')
+    # library_response = library_conn.get do |req|
+    #   req.params['title'] = params[:title]
+    # end
 
     book_hash = JSON.parse(library_response.body, symbolize_names: true)[:docs].first
 
