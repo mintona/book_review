@@ -29,6 +29,8 @@ RSpec.describe 'As a visitor' do
         expect(page).to have_content("Review Publication Date: 2019-10-15")
         expect(page).to have_content("Review Content")
 
+        #ideally i would have tested a 2nd book that has genres but decide to try to
+        #refactor the controller with remaining time
       end
     end
   end
