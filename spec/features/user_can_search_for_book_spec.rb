@@ -4,12 +4,12 @@ RSpec.describe 'As a visitor' do
   describe 'I can search for a book and its reviews' do
     it 'by entering the title into the search form on the index page' do
       visit '/'
+#man who saw everything does NOT have a subject, normal people does
+      fill_in :title, with: "the man who saw everything"
 
-      fill_in :title, "the man who saw everything"
+      click_on 'Find Book'
 
-      click_button 'Find Book'
-
-      expect(current_path).to eq('/search')
+      expect(current_path).to eq(search_path)
 
       expect(page).to have_css('.title')
       expect(page).to have_css('.author')
@@ -18,14 +18,14 @@ RSpec.describe 'As a visitor' do
 
       #reviews are the summary in the response
       expect(page).to have_content('Reviews: 2')
-      within("#reviews") do
+      within(".reviews") do
         #expect there to be 2 sections of specific review data
         #first review
         expect(page).to have_content("Review Publication Date: 2019-10-09")
-        expect(page).to have_content("Review Description")
+        expect(page).to have_content("Review Content")
         #second review
         expect(page).to have_content("Review Publication Date: 2019-10-15")
-        expect(page).to have_content("Review Description")
+        expect(page).to have_content("Review Content")
 
       end
     end
