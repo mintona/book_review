@@ -14,16 +14,18 @@ RSpec.describe 'As a visitor' do
       expect(page).to have_css('.title')
       expect(page).to have_css('.author')
       #subjects are genres are in the return data
-      expect(page).to have_css('.genres')
+      expect(page).to_not have_css('.genres')
 
       #reviews are the summary in the response
       expect(page).to have_content('Reviews: 2')
       within(".reviews") do
         #expect there to be 2 sections of specific review data
         #first review
+        expect(page).to have_content("Review 1")
         expect(page).to have_content("Review Publication Date: 2019-10-09")
         expect(page).to have_content("Review Content")
         #second review
+        expect(page).to have_content("Review 2")
         expect(page).to have_content("Review Publication Date: 2019-10-15")
         expect(page).to have_content("Review Content")
 
