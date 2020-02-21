@@ -6,10 +6,11 @@
 
 <section class="reviews">
 <h1>Reviews</h1>
-<% @book.reviews.each do |review| %>
+<p>Reviews: <%= @reviews.count %></p>
+<% @reviews.each do |review| %>
   <section class="review">
-    <p>Review Content: <%= review.content %></p>
-    <p>Review Content: <%= review.publication_date %></p>
+    <p>Review Content: <%= review.summary %></p>
+    <p>Review Publication Date: <%= review.publication_date %></p>
   </section>
 <% end %>
 </section>
